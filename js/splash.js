@@ -1,31 +1,62 @@
 
-// 新しいスマホ判定（画面幅ベース）
-function isSmartPhone() {
-    return window.matchMedia('(max-width: 768px)').matches;
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const splash = document.getElementById("splash");
+    const video = document.getElementById("splashVideo");
+    const main = document.getElementById("Wrapper");
 
-const splash = document.getElementById('splash');
-const video = document.getElementById('splashVideo');
-const wrapper = document.getElementById('Wrapper');
+    // スマホ判定（メディアクエリ使用）
+    function isSmartPhone() {
+        return window.matchMedia('(max-width: 768px)').matches;
+    }
 
-const source = document.createElement('source');
-source.src = isSmartPhone() ? 'images/splash_TT.mp4' : 'images/splash.mp4';
-source.type = 'video/mp4';
-video.appendChild(source);
-video.load();
+    // 適切な動画ソースを挿入
+    const source = document.createElement("source");
+    source.src = isSmartPhone() ? "images/splash_TT.mp4" : "images/splash.mp4";
+    source.type = "video/mp4";
+    video.appendChild(source);
 
-video.addEventListener('ended', () => {
-    // Wrapperを表示
-    wrapper.style.display = 'block';
-    requestAnimationFrame(() => {
-        wrapper.classList.add('show');
+    video.muted = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.currentTime = 0;
+
+    video.load(); // 明示的にロード
+
+    // 再生を試みる
+    video.play().catch(err => {
+        console.warn("自動再生失敗:", err);
+        fadeOutSplash();
     });
 
-    // splashをフェードアウト
-    splash.classList.add('fade-out');
+    // 念のため再生可能イベントでも再生
+    video.addEventListener("canplaythrough", () => {
+        video.play().catch(err => {
+            console.warn("自動再生失敗:", err);
+            fadeOutSplash();
+        });
+    });
 
-    // 完全非表示
-    setTimeout(() => {
-        splash.style.display = 'none';
-    }, 1000);
+    // 動画が終了したらフェードアウト
+    video.addEventListener("ended", () => {
+        fadeOutSplash();
+    });
+
+    function fadeOutSplash() {
+        main.style.display = "block";
+        main.style.overflow = "auto";
+        main.classList.add("show");
+
+        splash.classList.add("fade-out");
+
+        setTimeout(() => {
+            splash.style.display = "none";
+        }, 1000); // CSSのフェード時間と一致させる
+    }
+
+    // bfcache 対応
+    window.addEventListener("pageshow", (event) => {
+        if (event.persisted) {
+            window.location.reload();
+        }
+    });
 });
