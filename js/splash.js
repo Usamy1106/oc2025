@@ -35,22 +35,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // 動画再生関数（Promiseで制御）
     function playVideo(src, loop = false) {
         return new Promise((resolve, reject) => {
+            video.pause(); // 念のため停止
             video.loop = loop;
             video.src = src;
             video.load();
 
-            video.onloadeddata = () => {
-                video.play()
-                    .then(() => {
-                        resolve();
-                    })
-                    .catch((err) => {
+            video.oncanplaythrough = () => {
+                const promise = video.play();
+                if (promise !== undefined) {
+                    promise.then(resolve).catch(err => {
                         console.error(`再生エラー: ${src}`, err);
                         reject(err);
                     });
+                }
             };
         });
     }
+
 
     // splash3再生 → 終了後フェードアウト
     function playSplash3() {
