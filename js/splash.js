@@ -1,32 +1,30 @@
-window.addEventListener('DOMContentLoaded', () => {
-    const splash = document.getElementById('splash');
-    const wrapper = document.getElementById('Wrapper');
-    const video = document.getElementById('splashVideo');
+function isSmartPhone() {
+    return /iPhone|Android.+Mobile|Windows Phone/.test(navigator.userAgent);
+}
 
-    // PC/SP判定（ここは適宜判定ロジックを変更してください）
-    const isSP = window.innerWidth <= 480;
+const splash = document.getElementById('splash');
+const video = document.getElementById('splashVideo');
+const wrapper = document.getElementById('Wrapper');
 
-    // 動画ソース切り替え
-    video.src = isSP ? 'images/splash_TT.mp4' : 'images/splash.mp4';
+const source = document.createElement('source');
+source.src = isSmartPhone() ? 'images/splash_TT.mp4' : 'images/splash.mp4';
+source.type = 'video/mp4';
+video.appendChild(source);
+video.load();
 
-    // video読み込み後自動再生開始
-    video.load();
-    video.play();
-
-    // 再生終了時の処理
-    video.addEventListener('ended', () => {
-        // フェードアウト開始
-        splash.classList.add('fade-out');
-
-        // Wrapperをblockにしてフェードイン
-        wrapper.style.display = 'block';
-        setTimeout(() => {
-            wrapper.classList.add('show');
-        }, 50); // 少し遅延を入れてCSSのトランジションを効かせる
-
-        // フェードアウト完了後にdisplay:noneに
-        setTimeout(() => {
-            splash.style.display = 'none';
-        }, 1000); // CSSのopacity 1秒に合わせる
+// 動画終了時の処理
+video.addEventListener('ended', () => {
+    // Wrapperを表示（非表示状態からopacityでフェードイン）
+    wrapper.style.display = 'block';
+    requestAnimationFrame(() => {
+        wrapper.classList.add('show');
     });
+
+    // splashをフェードアウト
+    splash.classList.add('fade-out');
+
+    // 完全に非表示にする（フェード完了後）
+    setTimeout(() => {
+        splash.style.display = 'none';
+    }, 1000); // CSSのtransitionと同じ秒数
 });
