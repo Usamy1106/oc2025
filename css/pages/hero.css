@@ -1,0 +1,740 @@
+.hero-area {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.tittle {
+    position: absolute;
+    top: calc(723 / 1080 * 100vh);
+    /* 約66.94vh */
+    left: calc(-1 / 1920 * 100vw);
+    /* 約-0.05vw */
+    width: calc(700 / 1920 * 100vw);
+    /* 約38.28vw */
+    aspect-ratio: 735 / 323;
+}
+
+.text-oc2025__pc {
+    display: block;
+    position: absolute;
+    top: calc(672 / 1080 * 100vh);
+    /* 約62.22vh */
+    left: calc(783 / 1920 * 100vw);
+    /* 約40.78vw */
+    width: calc(1110.69 / 1920 * 100vw);
+    /* 約57.86vw */
+    height: auto;
+    transform: rotate(-17deg);
+}
+
+.text-oc2025__sp__en,
+.text-oc2025__sp {
+    display: none;
+}
+
+.text-oc2025__pc__en {
+    position: absolute;
+    top: calc(47.2 / 1080 * 100vh);
+    /* 約4.37vh */
+    left: calc(667 / 1920 * 100vw);
+    /* 約34.74vw */
+    width: calc(700 / 1920 * 100vw);
+    /* 約36.46vw */
+    height: auto;
+    aspect-ratio: 700 / 616;
+}
+
+.text-date {
+    position: absolute;
+    top: calc(73 / 1080 * 100vh);
+    /* 約6.76vh */
+    left: calc(272 / 1920 * 100vw);
+    /* 約14.17vw */
+    width: calc(220 / 1920 * 100vw);
+    /* 約12.39vw */
+    height: auto;
+    aspect-ratio: 237.795 / 549;
+}
+
+.human_1 {
+    position: absolute;
+    top: calc(386 / 1080 * 100vh);
+    /* 約35.74vh */
+    left: calc(451 / 1920 * 100vw);
+    /* 約23.49vw */
+    width: calc(207.789 / 1920 * 100vw);
+    /* 約10.82vw */
+    aspect-ratio: 207.789 / 220.207;
+    transform: rotate(26.326deg);
+}
+
+.human_2 {
+    position: absolute;
+    top: calc(-14 / 1080 * 100vh);
+    /* 約-1.30vh */
+    left: calc(471 / 1920 * 100vw);
+    /* 約24.53vw */
+    width: calc(308.343 / 1920 * 100vw);
+    /* 約16.06vw */
+    aspect-ratio: 308.343 / 323.651;
+    transform: rotate(-31.898deg);
+}
+
+.human_3 {
+    position: absolute;
+    top: calc(395 / 1080 * 100vh);
+    /* 約36.57vh */
+    left: calc(45 / 1920 * 100vw);
+    /* 約2.34vw */
+    width: calc(173 / 1920 * 100vw);
+    /* 約9.01vw */
+    aspect-ratio: 173 / 182;
+}
+
+.human_4 {
+    position: absolute;
+    top: calc(108 / 1080 * 100vh);
+    /* 約10.00vh */
+    left: calc(1497 / 1920 * 100vw);
+    /* 約77.97vw */
+    width: calc(363 / 1920 * 100vw);
+    /* 約18.91vw */
+    aspect-ratio: 121 / 119;
+}
+
+.human_5 {
+    position: absolute;
+    top: calc(60 / 1080 * 100vh);
+    /* 約5.56vh */
+    left: calc(78 / 1920 * 100vw);
+    /* 約4.06vw */
+    width: calc(303 / 1920 * 100vw);
+    /* 約15.78vw */
+    aspect-ratio: 101 / 98;
+}
+
+.human_6 {
+    position: absolute;
+    top: calc(-1.9 / 1080 * 100vh);
+    /* 約-0.18vh */
+    left: calc(792 / 1920 * 100vw);
+    /* 約41.25vw */
+    width: calc(237.347 / 1920 * 100vw);
+    /* 約12.36vw */
+    aspect-ratio: 237.347 / 264.524;
+    transform: rotate(47.024deg);
+}
+
+.human_7 {
+    position: absolute;
+    top: calc(408 / 1080 * 100vh);
+    /* 約37.78vh */
+    left: calc(961 / 1920 * 100vw);
+    /* 約50.05vw */
+    width: calc(262 / 1920 * 100vw);
+    /* 約13.65vw */
+    aspect-ratio: 262 / 267;
+}
+
+.human_8 {
+    position: absolute;
+    top: calc(244 / 1080 * 100vh);
+    /* 約22.59vh */
+    left: calc(1209 / 1920 * 100vw);
+    /* 約62.97vw */
+    width: calc(271 / 1920 * 100vw);
+    /* 約14.11vw */
+    aspect-ratio: 271 / 267;
+}
+
+.human_9 {
+    position: absolute;
+    top: calc(635 / 1080 * 100vh);
+    /* 約58.80vh */
+    left: calc(1429 / 1920 * 100vw);
+    /* 約74.43vw */
+    width: calc(396 / 1920 * 100vw);
+    /* 約20.63vw */
+    aspect-ratio: 198 / 179;
+}
+
+.human_10 {
+    position: absolute;
+    top: calc(822 / 1080 * 100vh);
+    /* 約76.11vh */
+    left: calc(1135 / 1920 * 100vw);
+    /* 約59.11vw */
+    width: calc(232 / 1920 * 100vw);
+    /* 約12.08vw */
+    aspect-ratio: 232 / 195;
+}
+
+/* 画面が縦長（= 比率が潰れ気味）な端末向けに余白を追加 */
+@media (max-aspect-ratio: 3/2) {
+    .hero-area {
+        margin-top: 5vh;
+        /* 上に少し余白を空ける */
+    }
+
+
+    .text-oc2025__pc {
+        transform: rotate(-17deg);
+    }
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .hero-area {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .tittle {
+        position: absolute;
+        top: calc(723 / 1080 * 100vh);
+        /* 約66.94vh */
+        left: calc(-1 / 1920 * 100vw);
+        /* 約-0.05vw */
+        width: calc(700 / 1920 * 100vw);
+        /* 約38.28vw */
+        aspect-ratio: 735 / 323;
+    }
+
+    .text-oc2025__pc {
+        display: block;
+        position: absolute;
+        top: calc(672 / 1080 * 100vh);
+        /* 約62.22vh */
+        left: calc(783 / 1920 * 100vw);
+        /* 約40.78vw */
+        width: calc(1110.69 / 1920 * 100vw);
+        /* 約57.86vw */
+        height: auto;
+        transform: rotate(-17deg);
+    }
+
+    .text-oc2025__sp__en,
+    .text-oc2025__sp {
+        display: none;
+    }
+
+    .text-oc2025__pc__en {
+        position: absolute;
+        top: calc(47.2 / 1080 * 100vh);
+        /* 約4.37vh */
+        left: calc(667 / 1920 * 100vw);
+        /* 約34.74vw */
+        width: calc(700 / 1920 * 100vw);
+        /* 約36.46vw */
+        height: auto;
+        aspect-ratio: 700 / 616;
+    }
+
+    .text-date {
+        position: absolute;
+        top: calc(73 / 1080 * 100vh);
+        /* 約6.76vh */
+        left: calc(272 / 1920 * 100vw);
+        /* 約14.17vw */
+        width: calc(220 / 1920 * 100vw);
+        /* 約12.39vw */
+        height: auto;
+        aspect-ratio: 237.795 / 549;
+    }
+
+    .human_1 {
+        position: absolute;
+        top: calc(386 / 1080 * 100vh);
+        /* 約35.74vh */
+        left: calc(451 / 1920 * 100vw);
+        /* 約23.49vw */
+        width: calc(207.789 / 1920 * 100vw);
+        /* 約10.82vw */
+        aspect-ratio: 207.789 / 220.207;
+        transform: rotate(26.326deg);
+    }
+
+    .human_2 {
+        position: absolute;
+        top: calc(-14 / 1080 * 100vh);
+        /* 約-1.30vh */
+        left: calc(471 / 1920 * 100vw);
+        /* 約24.53vw */
+        width: calc(308.343 / 1920 * 100vw);
+        /* 約16.06vw */
+        aspect-ratio: 308.343 / 323.651;
+        transform: rotate(-31.898deg);
+    }
+
+    .human_3 {
+        position: absolute;
+        top: calc(395 / 1080 * 100vh);
+        /* 約36.57vh */
+        left: calc(45 / 1920 * 100vw);
+        /* 約2.34vw */
+        width: calc(173 / 1920 * 100vw);
+        /* 約9.01vw */
+        aspect-ratio: 173 / 182;
+    }
+
+    .human_4 {
+        position: absolute;
+        top: calc(108 / 1080 * 100vh);
+        /* 約10.00vh */
+        left: calc(1497 / 1920 * 100vw);
+        /* 約77.97vw */
+        width: calc(363 / 1920 * 100vw);
+        /* 約18.91vw */
+        aspect-ratio: 121 / 119;
+    }
+
+    .human_5 {
+        position: absolute;
+        top: calc(60 / 1080 * 100vh);
+        /* 約5.56vh */
+        left: calc(78 / 1920 * 100vw);
+        /* 約4.06vw */
+        width: calc(303 / 1920 * 100vw);
+        /* 約15.78vw */
+        aspect-ratio: 101 / 98;
+    }
+
+    .human_6 {
+        position: absolute;
+        top: calc(-1.9 / 1080 * 100vh);
+        /* 約-0.18vh */
+        left: calc(792 / 1920 * 100vw);
+        /* 約41.25vw */
+        width: calc(237.347 / 1920 * 100vw);
+        /* 約12.36vw */
+        aspect-ratio: 237.347 / 264.524;
+        transform: rotate(47.024deg);
+    }
+
+    .human_7 {
+        position: absolute;
+        top: calc(408 / 1080 * 100vh);
+        /* 約37.78vh */
+        left: calc(961 / 1920 * 100vw);
+        /* 約50.05vw */
+        width: calc(262 / 1920 * 100vw);
+        /* 約13.65vw */
+        aspect-ratio: 262 / 267;
+    }
+
+    .human_8 {
+        position: absolute;
+        top: calc(244 / 1080 * 100vh);
+        /* 約22.59vh */
+        left: calc(1209 / 1920 * 100vw);
+        /* 約62.97vw */
+        width: calc(271 / 1920 * 100vw);
+        /* 約14.11vw */
+        aspect-ratio: 271 / 267;
+    }
+
+    .human_9 {
+        position: absolute;
+        top: calc(635 / 1080 * 100vh);
+        /* 約58.80vh */
+        left: calc(1429 / 1920 * 100vw);
+        /* 約74.43vw */
+        width: calc(396 / 1920 * 100vw);
+        /* 約20.63vw */
+        aspect-ratio: 198 / 179;
+    }
+
+    .human_10 {
+        position: absolute;
+        top: calc(822 / 1080 * 100vh);
+        /* 約76.11vh */
+        left: calc(1135 / 1920 * 100vw);
+        /* 約59.11vw */
+        width: calc(232 / 1920 * 100vw);
+        /* 約12.08vw */
+        aspect-ratio: 232 / 195;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .hero-area {
+        margin-top: 0;
+    }
+
+    .tittle {
+        width: 100%;
+        height: 175.792px;
+        aspect-ratio: 401.00/175.79;
+        top: calc(938 / 1366 * 100vh);
+        left: 0;
+    }
+
+    .text-oc2025__pc__en,
+    .text-oc2025__pc {
+        display: none;
+    }
+
+    .text-oc2025__sp__en,
+    .text-oc2025__sp {
+        display: block;
+    }
+
+
+    .text-oc2025__sp {
+        position: absolute;
+        top: calc(140 / 1366 * 100vh);
+        left: calc(670 / 1024 * 100vw);
+        width: clamp(100px, 22vw, 240px);
+        height: auto;
+        aspect-ratio: 151.408 / 436;
+    }
+
+    .text-oc2025__sp__en {
+        position: absolute;
+        top: calc(160 / 1366 * 100vh);
+        left: 42%;
+        width: clamp(100px, 22vw, 240px);
+        height: auto;
+        aspect-ratio: 700 / 616;
+    }
+
+    .text-date {
+        top: calc(500 / 1366 * 100vh);
+        left: calc(150 / 1024 * 100vw);
+        width: clamp(90px, 19vw, 180px);
+        height: auto;
+        aspect-ratio: 237.795 / 549;
+    }
+
+    .human_1 {
+        top: calc(380 / 1366 * 100vh);
+        left: calc(346 / 1024 * 100vw);
+        width: clamp(40px, 15vw, 160px);
+        height: auto;
+        transform: rotate(25.69deg);
+        aspect-ratio: 84.065 / 89.089;
+    }
+
+    .human_2 {
+        top: calc(200 / 1366 * 100vh);
+        left: calc(396 / 1024 * 100vw);
+        width: clamp(40px, 16vw, 160px);
+        height: auto;
+        transform: rotate(-117.38deg);
+        aspect-ratio: 99.77 / 104.143;
+    }
+
+    .human_3 {
+        top: calc(298 / 1366 * 100vh);
+        left: calc(905 / 1024 * 100vw);
+        width: clamp(35px, 14vw, 140px);
+        height: auto;
+        aspect-ratio: 173 / 182;
+    }
+
+    .human_4 {
+        top: calc(220 / 1366 * 100vh);
+        left: calc(-4 / 1024 * 100vw);
+        width: clamp(70px, 26vw, 280px);
+        height: auto;
+        aspect-ratio: 144 / 141.663;
+    }
+
+    .human_5 {
+        top: calc(526 / 1366 * 100vh);
+        left: calc(-57 / 1024 * 100vw);
+        width: clamp(60px, 24vw, 240px);
+        height: auto;
+        transform: rotate(77deg);
+        aspect-ratio: 133.036 / 129.566;
+    }
+
+    .human_6 {
+        top: 0;
+        left: calc(415 / 1024 * 100vw);
+        width: clamp(50px, 18vw, 180px);
+        height: auto;
+        transform: rotate(21deg);
+        aspect-ratio: 92.817 / 103.445;
+    }
+
+    .human_7 {
+        top: calc(-40 / 1366 * 100vh);
+        left: calc(60 / 1024 * 100vw);
+        width: clamp(55px, 20vw, 220px);
+        height: auto;
+        transform: rotate(16.356deg);
+        flex-shrink: 0;
+        aspect-ratio: 111.489 / 113.317;
+    }
+
+    .human_8 {
+        top: 0;
+        left: calc(665 / 1024 * 100vw);
+        width: clamp(50px, 20vw, 198px);
+        height: auto;
+        transform: rotate(-8.982deg);
+        flex-shrink: 0;
+        aspect-ratio: 103.006 / 101.236;
+    }
+
+    .human_9 {
+        top: calc(682 / 1366 * 100vh);
+        left: calc(600 / 1024* 100vw);
+        width: clamp(80px, 28vw, 348px);
+        height: auto;
+        transform: rotate(-13.833deg);
+        flex-shrink: 0;
+        aspect-ratio: 157.987 / 142.801;
+    }
+
+    .human_10 {
+        top: calc(528 / 1366 * 100vh);
+        left: calc(859 / 1024 * 100vw);
+        width: clamp(60px, 22vw, 225px);
+        height: auto;
+        transform: rotate(-53.331deg);
+        flex-shrink: 0;
+        aspect-ratio: 110.078 / 92.523;
+    }
+
+    /*ipad*/
+    .ipad-landscape .text-oc2025__sp__en,
+    .ipad-landscape .text-oc2025__sp {
+        display: none;
+    }
+
+    .ipad-landscape .tittle {
+        top: 63vh;
+        left: 2vw;
+        width: 45vw;
+        aspect-ratio: 735 / 323;
+    }
+
+    .ipad-landscape .text-oc2025__pc {
+        display: block;
+        top: 58vh;
+        left: 50vw;
+        width: 48vw;
+        transform: rotate(-15deg);
+    }
+
+    .ipad-landscape .text-oc2025__pc__en {
+        display: block;
+        top: 5vh;
+        left: 40vw;
+        width: 42vw;
+    }
+
+    .ipad-landscape .text-date {
+        top: 4vh;
+        left: 16vw;
+        width: 15vw;
+    }
+
+    .ipad-landscape .human_1 {
+        top: 34vh;
+        left: 28vw;
+        width: 12vw;
+        transform: rotate(26deg);
+    }
+
+    .ipad-landscape .human_2 {
+        top: 2vh;
+        left: 32vw;
+        width: 16vw;
+        transform: rotate(-32deg);
+    }
+
+    .ipad-landscape .human_3 {
+        top: 36vh;
+        left: 2vw;
+        width: 10vw;
+    }
+
+    .ipad-landscape .human_4 {
+        top: 10vh;
+        left: 85vw;
+        width: 18vw;
+    }
+
+    .ipad-landscape .human_5 {
+        top: 6vh;
+        left: 5vw;
+        width: 15vw;
+    }
+
+    .ipad-landscape .human_6 {
+        top: 0vh;
+        left: 48vw;
+        width: 13vw;
+        transform: rotate(47deg);
+    }
+
+    .ipad-landscape .human_7 {
+        top: 37vh;
+        left: 58vw;
+        width: 13vw;
+    }
+
+    .ipad-landscape .human_8 {
+        top: 22vh;
+        left: 73vw;
+        width: 14vw;
+    }
+
+    .ipad-landscape .human_9 {
+        top: 60vh;
+        left: 79vw;
+        width: 20vw;
+    }
+
+    .ipad-landscape .human_10 {
+        top: 78vh;
+        left: 68vw;
+        width: 12vw;
+    }
+}
+
+
+
+@media only screen and (max-width: 480px) {
+    .tittle {
+        aspect-ratio: 401 / 175.79;
+        top: calc(640 / 852 * 100vh);
+        left: 0;
+    }
+
+
+    .text-oc2025__sp__en,
+    .text-oc2025__sp {
+        display: block;
+    }
+
+    .text-oc2025__sp {
+        position: absolute;
+        top: calc(140 / 852 * 100vh);
+        left: calc(240 / 393 * 100vw);
+        width: clamp(80px, 38vw, 180px);
+        max-width: 120px;
+        height: auto;
+        aspect-ratio: 151.408 / 436;
+    }
+
+    .text-oc2025__sp__en {
+        position: absolute;
+        top: calc(172 / 852 * 100vh);
+        left: 34%;
+        width: clamp(70px, 36vw, 160px);
+        max-width: 120px;
+        height: auto;
+        aspect-ratio: 700 / 616;
+    }
+
+    .text-date {
+        top: calc(360 / 852 * 100vh);
+        left: calc(17 / 393 * 100vw);
+        width: clamp(60px, 32vw, 130px);
+        max-width: 98px;
+        height: auto;
+        aspect-ratio: 237.795 / 549;
+    }
+
+
+    .human_1 {
+        top: calc(213 / 852 * 100vh);
+        left: calc(89.5 / 393 * 100vw);
+        width: clamp(60px, 21.5vw, 90px);
+        height: auto;
+        transform: rotate(25.69deg);
+        aspect-ratio: 84.065 / 89.089;
+    }
+
+    .human_2 {
+        top: calc(110 / 852 * 100vh);
+        left: calc(98 / 393 * 100vw);
+        width: clamp(70px, 25.4vw, 110px);
+        height: auto;
+        transform: rotate(-117.38deg);
+        aspect-ratio: 99.77 / 104.143;
+    }
+
+    .human_3 {
+        top: calc(278 / 852 * 100vh);
+        left: calc(339 / 393 * 100vw);
+        width: clamp(50px, 19.1vw, 85px);
+        height: auto;
+        aspect-ratio: 173 / 182;
+    }
+
+    .human_4 {
+        top: calc(94 / 852 * 100vh);
+        left: calc(-31 / 393 * 100vw);
+        width: clamp(100px, 36.6vw, 160px);
+        height: auto;
+        aspect-ratio: 144 / 141.663;
+    }
+
+    .human_5 {
+        top: calc(246 / 852 * 100vh);
+        left: calc(-36 / 393 * 100vw);
+        width: clamp(90px, 33.8vw, 150px);
+        height: auto;
+        transform: rotate(77deg);
+        aspect-ratio: 133.036 / 129.566;
+    }
+
+    .human_6 {
+        top: 0;
+        left: calc(115 / 393 * 100vw);
+        width: clamp(70px, 23.6vw, 110px);
+        height: auto;
+        transform: rotate(21deg);
+        aspect-ratio: 92.817 / 103.445;
+    }
+
+    .human_7 {
+        top: calc(-28 / 852 * 100vh);
+        left: calc(-5 / 393 * 100vw);
+        width: clamp(80px, 28.4vw, 120px);
+        height: auto;
+        transform: rotate(16.356deg);
+        flex-shrink: 0;
+        aspect-ratio: 111.489 / 113.317;
+    }
+
+    .human_8 {
+        top: calc(50 / 852 * 100vh);
+        left: calc(227 / 393 * 100vw);
+        width: clamp(70px, 26.2vw, 120px);
+        height: auto;
+        transform: rotate(-8.982deg);
+        flex-shrink: 0;
+        aspect-ratio: 103.006 / 101.236;
+    }
+
+    .human_9 {
+        top: calc(500/ 852 * 100vh);
+        left: calc(186 / 393 * 100vw);
+        width: clamp(110px, 40.2vw, 170px);
+        height: auto;
+        transform: rotate(-13.833deg);
+        flex-shrink: 0;
+        aspect-ratio: 157.987 / 142.801;
+    }
+
+    .human_10 {
+        top: calc(410 / 852 * 100vh);
+        left: calc(318 / 393 * 100vw);
+        width: clamp(80px, 28vw, 130px);
+        height: auto;
+        transform: rotate(-53.331deg);
+        flex-shrink: 0;
+        aspect-ratio: 110.078 / 92.523;
+    }
+}
