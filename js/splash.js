@@ -6,8 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // デバイス判定
     const isMobile = window.innerWidth <= 768;
 
-    // 動画ファイル定義
-    const splashTT = "images/splash_TT.mp4"; // スマホ用単一動画
+    // 動画ファイル定義（PC用）
     const splash1 = "images/splash_1.mp4";
     const splash2 = "images/splash_2.mp4";
     const splash3 = "images/splash_3.mp4";
@@ -18,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
     video.setAttribute("muted", "");
     video.setAttribute("playsinline", "");
     video.setAttribute("autoplay", "");
+    video.setAttribute("preload", "auto");
+    video.setAttribute("webkit-playsinline", "");
     video.muted = true;
     video.playsInline = true;
     video.autoplay = true;
@@ -34,18 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 動画再生関数（Promiseで制御）
-    function playVideo(src, loop = false) {
+    function playVideo() {
         return new Promise((resolve, reject) => {
             video.pause();
-            video.loop = loop;
-            video.src = src;
             video.load();
 
             video.oncanplaythrough = () => {
                 const promise = video.play();
                 if (promise !== undefined) {
                     promise.then(resolve).catch(err => {
-                        console.error(`再生エラー: ${src}`, err);
+                        console.error("再生エラー:", err);
                         reject(err);
                     });
                 }
@@ -53,18 +52,25 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // splash3再生 → 終了後フェードアウト（PC用）
+    // PC用再生フロー
     function playSplash3() {
-        playVideo(splash3, false)
+        video.loop = false;
+        video.src = splash3;
+        video.load();
+
+        playVideo()
             .then(() => {
                 video.addEventListener("ended", fadeOutSplash, { once: true });
             })
             .catch(fadeOutSplash);
     }
 
-    // splash2をループ再生 → loadingCompleteを待つ（PC用）
     function playSplash2LoopUntilLoaded() {
-        playVideo(splash2, true)
+        video.loop = true;
+        video.src = splash2;
+        video.load();
+
+        playVideo()
             .then(() => {
                 const check = setInterval(() => {
                     if (loadingComplete) {
@@ -79,9 +85,12 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    // splash1再生後にsplash2（PC用）
     function playSplash1ThenLoopSplash2() {
-        playVideo(splash1, false)
+        video.loop = false;
+        video.src = splash1;
+        video.load();
+
+        playVideo()
             .then(() => {
                 video.addEventListener("ended", () => {
                     playSplash2LoopUntilLoaded();
@@ -93,16 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    // スマホ用： splash_TTを1回再生して終了
-    function playSplashTT() {
-        playVideo(splashTT, false)
-            .then(() => {
-                video.addEventListener("ended", fadeOutSplash, { once: true });
-            })
-            .catch(fadeOutSplash);
-    }
-
-    // 疑似ローディング（画像やAPIの読み込みを想定）
+    // 疑似ローディング
     function simulateLoading() {
         setTimeout(() => {
             loadingComplete = true;
@@ -116,9 +116,24 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // 実行開始
+    // スマホの場合はsourceタグを動画内に追加
     if (isMobile) {
-        playSplashTT();
+        // video内のソースをクリアしてから追加
+        video.innerHTML = '';
+        const source = document.createElement("source");
+        source.src = "images/splash_TT.mp4";
+        source.type = "video/mp4";
+        source.media = "(max-width: 768px)";
+        video.appendChild(source);
+
+        video.loop = false;
+        video.load();
+
+        playVideo()
+            .then(() => {
+                video.addEventListener("ended", fadeOutSplash, { once: true });
+            })
+            .catch(fadeOutSplash);
     } else {
         playSplash1ThenLoopSplash2();
         simulateLoading();
