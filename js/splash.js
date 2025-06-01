@@ -3,15 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const video = document.getElementById("splashVideo");
     const main = document.getElementById("Wrapper");
 
+    // デバイス判定
     const isMobile = window.innerWidth <= 768;
 
+    // 動画ファイル定義（PC / モバイル）
     const splash1 = isMobile ? "images/splash_TT1.mp4" : "images/splash_1.mp4";
     const splash2 = isMobile ? "images/splash_TT2.mp4" : "images/splash_2.mp4";
     const splash3 = isMobile ? "images/splash_TT3.mp4" : "images/splash_3.mp4";
 
     let loadingComplete = false;
 
-    // 安全対策
+    // video初期設定
     video.setAttribute("muted", "");
     video.setAttribute("playsinline", "");
     video.setAttribute("autoplay", "");
@@ -19,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     video.playsInline = true;
     video.autoplay = true;
 
+    // スプラッシュ終了処理
     function fadeOutSplash() {
         main.style.display = "block";
         main.style.overflow = "auto";
@@ -29,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1000);
     }
 
+    // 動画再生関数（Promiseで制御）
     function playVideo(src, loop = false) {
         return new Promise((resolve, reject) => {
             video.loop = loop;
@@ -37,7 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             video.onloadeddata = () => {
                 video.play()
-                    .then(resolve)
+                    .then(() => {
+                        resolve();
+                    })
                     .catch((err) => {
                         console.error(`再生エラー: ${src}`, err);
                         reject(err);
@@ -46,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // splash3再生 → 終了後フェードアウト
     function playSplash3() {
         playVideo(splash3, false)
             .then(() => {
@@ -54,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch(fadeOutSplash);
     }
 
+    // splash2をループ再生 → loadingCompleteを待つ
     function playSplash2LoopUntilLoaded() {
         playVideo(splash2, true)
             .then(() => {
@@ -70,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
+    // splash1再生後にsplash2
     function playSplash1ThenLoopSplash2() {
         playVideo(splash1, false)
             .then(() => {
@@ -83,18 +92,21 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
+    // 疑似ローディング（画像やAPIの読み込みを想定）
     function simulateLoading() {
         setTimeout(() => {
             loadingComplete = true;
-        }, 5000);
+        }, 5000); // 5秒で読み込み完了
     }
 
+    // bfcache対策
     window.addEventListener("pageshow", (event) => {
         if (event.persisted) {
             window.location.reload();
         }
     });
 
+    // 実行開始
     playSplash1ThenLoopSplash2();
     simulateLoading();
 });
