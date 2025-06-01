@@ -120,12 +120,6 @@
 }
 
 @media only screen and (max-width: 480px) {
-    #splashVideo {
-        width: 100%;
-        object-fit: contain;
-    }
-
-
     .theme .human-img {
         bottom: calc(-98 / 852 * 100vh);
         left: calc(12 / 393 * 100vw);
