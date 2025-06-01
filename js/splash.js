@@ -1,5 +1,7 @@
+
+// 新しいスマホ判定（画面幅ベース）
 function isSmartPhone() {
-    return /iPhone|Android.+Mobile|Windows Phone/.test(navigator.userAgent);
+    return window.matchMedia('(max-width: 768px)').matches;
 }
 
 const splash = document.getElementById('splash');
@@ -12,9 +14,8 @@ source.type = 'video/mp4';
 video.appendChild(source);
 video.load();
 
-// 動画終了時の処理
 video.addEventListener('ended', () => {
-    // Wrapperを表示（非表示状態からopacityでフェードイン）
+    // Wrapperを表示
     wrapper.style.display = 'block';
     requestAnimationFrame(() => {
         wrapper.classList.add('show');
@@ -23,8 +24,8 @@ video.addEventListener('ended', () => {
     // splashをフェードアウト
     splash.classList.add('fade-out');
 
-    // 完全に非表示にする（フェード完了後）
+    // 完全非表示
     setTimeout(() => {
         splash.style.display = 'none';
-    }, 1000); // CSSのtransitionと同じ秒数
+    }, 1000);
 });
