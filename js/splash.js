@@ -11,15 +11,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (isMobile) {
         // スマホ向け処理
+        video.muted = true;
+        video.playsInline = true;
+        video.autoplay = true;
+
         video.src = "images/splash_TT.mp4";
         video.load();
-        video.play().catch(err => {
-            console.warn("スマホ自動再生失敗:", err);
-            fadeOutSplash();
-        });
-        video.addEventListener("ended", fadeOutSplash);
 
-    } else {
+        video.play().then(() => {
+            console.log("スマホでの自動再生成功");
+        }).catch(err => {
+            console.warn("スマホ自動再生失敗:", err);
+            fadeOutSplash(); // 失敗時はすぐ本編へ
+        });
+
+        video.addEventListener("ended", fadeOutSplash);
+    }
+    else {
         // PC向け処理
         const splash1 = "images/splash_1.mp4";
         const splash2 = "images/splash_2.mp4";
