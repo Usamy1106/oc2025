@@ -37,15 +37,26 @@ document.addEventListener("DOMContentLoaded", () => {
         let splash2Ready = false;
         let splash2PlayedOnce = false;
 
-        const playVideo = (src, loop = false) => {
-            video.loop = loop;
-            video.src = src;
+        const source = video.querySelector("source");
+
+        video.muted = true;
+        video.playsInline = true;
+        video.autoplay = true;
+
+        if (isMobile) {
+            source.src = "images/splash_TT.mp4";
             video.load();
-            video.play().catch(err => {
-                console.warn(`動画再生失敗（${src}）:`, err);
+
+            video.play().then(() => {
+                console.log("スマホでの自動再生成功");
+            }).catch(err => {
+                console.warn("スマホ自動再生失敗:", err);
                 fadeOutSplash();
             });
-        };
+
+            video.addEventListener("ended", fadeOutSplash);
+        }
+
 
         video.addEventListener("ended", () => {
             if (step === 0) {
