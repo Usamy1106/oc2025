@@ -12,10 +12,10 @@ const isElementInViewport = (el) => {
 const handleScroll = () => {
   triggers.forEach(trigger => {
     if (isElementInViewport(trigger)) {
-      const fadeInElems = trigger.querySelectorAll('.fadeIn');
+      //const fadeInElems = trigger.querySelectorAll('.fadeIn');
       const zoomInElems = trigger.querySelectorAll('.zoomIn');
 
-      fadeInElems.forEach(el => el.classList.add('action'));
+      //fadeInElems.forEach(el => el.classList.add('action'));
       zoomInElems.forEach(el => el.classList.add('action'));
     }
   });
